@@ -8,6 +8,6 @@ fetch(`https://api.nationalize.io/?name=${name}`)
         if(data.country.length) {
             console.log(`${name} is from ${data.country[0].country_id}`)
         } else {
-            console.log(`Data not availabe for ${name}`)
+            console.log(`Data not available for ${name}`)
         }
     });
