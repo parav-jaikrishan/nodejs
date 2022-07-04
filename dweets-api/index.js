@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const _ = require("lodash");
+const e = require("express");
 
 const app = express();
 app.set('view engine', 'ejs');
@@ -51,6 +52,15 @@ app.get("/dweet/:id", (req, res) => {
             res.send(err);
         else
             res.send(result);
+    })
+});
+
+app.get("/dweet/:id/delete", (req, res) => {
+    Dweet.deleteOne({ _id: req.params.id }, err => {
+        if(err)
+            res.send(err);
+        else
+            res.send(`Sucessfuly deleted dweet with id: ${req.params.id}`)
     })
 });
 
