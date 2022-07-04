@@ -44,28 +44,44 @@ app.get("/dweet", (_req, res) => {
     })
 });
 
+app.route("/dweet/create")
+    .get((_req, res) => {
+        res.render("create");
+    })
+    .post((req, res) => {
+        const newUsername = req.body.username;
+        const newDweet = req.body.dweet;
+        const newDate = new Date();
+        const item = new Dweet({
+            "dweet": newDweet,
+            "posted_by": newUsername,
+            "posted_at": newDate,
+            "last_updated_at": newDate
+        });
+        item.save();
+        res.send(`Sucessfully created new dweet`);
+    });
+
 app.route("/dweet/:id")
     .get((req, res) => {
         Dweet.findOne({ _id: req.params.id }, (err, result) => {
             if(err)
-                res.send(err);
+                console.log(err);
             else
                 res.send(result);
         })
     })
-    .delete((req, res) => {
+    .delete((req, _res) => {
         Dweet.deleteOne({ _id: req.params.id }, err => {
             if(err)
-                res.send(err);
+                console.log(err);
         })
     })
-    .post((req, res) => {
+    .post((req, _res) => {
         const newDweet = req.body.dweet;
         const newAuthor = req.body.author;
         const newDate = new Date();
-        Dweet.findOneAndUpdate({ _id: req.params.id }, { "dweet": newDweet, "posted_by": newAuthor, "last_updated_at": newDate }, () => {
-            res.redirect("/dweet");
-        })
+        Dweet.findOneAndUpdate({ _id: req.params.id }, { "dweet": newDweet, "posted_by": newAuthor, "last_updated_at": newDate });
     });
 
 app.get("/dweet/:id/delete", (req, res) => {
