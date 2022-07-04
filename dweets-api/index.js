@@ -1,8 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const _ = require("lodash");
-const e = require("express");
 
 const app = express();
 app.set('view engine', 'ejs');
@@ -46,14 +44,29 @@ app.get("/dweet", (_req, res) => {
     })
 });
 
-app.get("/dweet/:id", (req, res) => {
-    Dweet.findOne({ _id: req.params.id }, (err, result) => {
-        if(err)
-            res.send(err);
-        else
-            res.send(result);
+app.route("/dweet/:id")
+    .get((req, res) => {
+        Dweet.findOne({ _id: req.params.id }, (err, result) => {
+            if(err)
+                res.send(err);
+            else
+                res.send(result);
+        })
     })
-});
+    .delete((req, res) => {
+        Dweet.deleteOne({ _id: req.params.id }, err => {
+            if(err)
+                res.send(err);
+        })
+    })
+    .post((req, res) => {
+        const newDweet = req.body.dweet;
+        const newAuthor = req.body.author;
+        const newDate = new Date();
+        Dweet.findOneAndUpdate({ _id: req.params.id }, { "dweet": newDweet, "posted_by": newAuthor, "last_updated_at": newDate }, () => {
+            res.redirect("/dweet");
+        })
+    });
 
 app.get("/dweet/:id/delete", (req, res) => {
     Dweet.deleteOne({ _id: req.params.id }, err => {
@@ -61,8 +74,25 @@ app.get("/dweet/:id/delete", (req, res) => {
             res.send(err);
         else
             res.send(`Sucessfuly deleted dweet with id: ${req.params.id}`)
-    })
+    });
 });
 
-app.listen(port || 3000, () => console.log(`Server started at http://localhost:${port}/`))
-console.log(new Date(0));
+app.route("/dweet/:id/update")
+    .get((req, res) => {
+        Dweet.findOne({ _id: req.params.id }, (err, result) => {
+            if(err)
+                res.send(err);
+            else
+                res.render('update', { data: result });
+        })
+    })
+    .post((req, res) => {
+        const newDweet = req.body.dweet;
+        const newAuthor = req.body.author;
+        const newDate = new Date();
+        Dweet.findOneAndUpdate({ _id: req.params.id }, { "dweet": newDweet, "posted_by": newAuthor, "last_updated_at": newDate }, () => {
+            res.send(`Successfully updated dweet with id: ${req.params.id}`);
+        })
+    })
+
+app.listen(port || 3000, () => console.log(`Server started at http://localhost:${port}/`));1
