@@ -1,9 +1,9 @@
 <%- include('partials/header'); -%>
     <form class="update-form" action="/" method="POST">
         <label for="dweet">Update Dweet</label>
-        <input name="dweet" type="text" placeholder="<%- data.dweet -%>"/>
+        <input name="dweet" type="text" placeholder="<%- data.dweet -%>" value="<%- data.dweet -%>" required/>
         <label for="author">Author</label>
-        <input name="author" type="text" placeholder="<%- data.posted_by -%>"/>
+        <input name="author" type="text" placeholder="<%- data.posted_by -%>" value="<%- data.posted_by -%>" required/>
         <input type="submit" value="Update"/>
     </form>
 <%- include('partials/footer'); -%>
