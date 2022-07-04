@@ -12,19 +12,19 @@ const port = 3000;
 mongoose.connect("mongodb+srv://admin-parav:Test123@cluster0.dflwu.mongodb.net/dweetsDB", { useNewUrlParser: true, useUnifiedTopology: true });
 
 const dweetSchema = new mongoose.Schema({
-    dweet: {
+    "dweet": {
         type: String,
         required: [true, "Please check your data entry, no content entered!"]
     },
-    posted_by: {
+    "posted_by": {
         type: String,
         required: [true, "Please check your data entry, no username entered"]
     },
-    posted_at: {
+    "posted_at": {
         type: Date,
         required: [true, "Please check your data entry, no date specified!"]
     },
-    last_updated_at: {
+    "last_updated_at": {
         type: Date,
         required: [true, "Please check your data entry, no date specified!"]
     }
@@ -33,7 +33,17 @@ const dweetSchema = new mongoose.Schema({
 const Dweet = mongoose.model("Dweet", dweetSchema);
 
 app.get("/", (_req, res) => {
-
+    res.send("Go to /dweets");
 });
 
-app.listen(port || 3000, () => `Server started at http://localhost:${port}/`)
+app.get("/dweets", (_req, res) => {
+    Dweet.find((err, results) => {
+        if(err)
+            res.send(err);
+        else
+            res.send(results);
+    })
+})
+
+app.listen(port || 3000, () => console.log(`Server started at http://localhost:${port}/`))
+console.log(new Date(0));
