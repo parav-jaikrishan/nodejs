@@ -33,17 +33,26 @@ const dweetSchema = new mongoose.Schema({
 const Dweet = mongoose.model("Dweet", dweetSchema);
 
 app.get("/", (_req, res) => {
-    res.send("Go to /dweets");
+    res.send("Go to /dweet");
 });
 
-app.get("/dweets", (_req, res) => {
-    Dweet.find((err, results) => {
+app.get("/dweet", (_req, res) => {
+    Dweet.find((err, result) => {
         if(err)
             res.send(err);
         else
-            res.send(results);
+            res.send(result);
     })
-})
+});
+
+app.get("/dweet/:id", (req, res) => {
+    Dweet.findOne({ _id: req.params.id }, (err, result) => {
+        if(err)
+            res.send(err);
+        else
+            res.send(result);
+    })
+});
 
 app.listen(port || 3000, () => console.log(`Server started at http://localhost:${port}/`))
 console.log(new Date(0));
