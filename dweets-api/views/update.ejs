@@ -2,7 +2,7 @@
     <form action="./update" method="POST">
         <div class="group">
             <label for="dweet">Update Dweet</label>
-            <textarea name="dweet" type="text" placeholder="<%- data.dweet -%>" required></textarea>
+            <textarea name="dweet" type="text" placeholder="<%- data.dweet -%>" maxlength="140" required></textarea>
         </div>
         <div class="group">
             <label for="author">Author</label>
