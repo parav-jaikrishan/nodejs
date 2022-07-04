@@ -1,0 +1,16 @@
+<%- include('partials/header'); -%>
+    <form action="./create" method="POST">
+        <div class="group">
+            <label for="username">Username</label>
+            <input name="username" type="text" placeholder="Enter your username here" required>
+        </div>
+        <div class="group">
+            <label for="dweet">Dweet</label>
+            <textarea name="dweet" type="text" placeholder="Write your dweet here" maxlength="140" required></textarea>
+        </div>
+        <div class="group">
+            <input type="submit" value="Create Dweet"/>
+        </div>
+        <div class="group"></div>
+    </form>
+<%- include('partials/footer'); -%>
