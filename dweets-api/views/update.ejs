@@ -1,9 +1,15 @@
 <%- include('partials/header'); -%>
-    <form class="update-form" action="./update" method="POST">
-        <label for="dweet">Update Dweet</label>
-        <input name="dweet" type="text" placeholder="<%- data.dweet -%>" value="<%- data.dweet -%>" required/>
-        <label for="author">Author</label>
-        <input name="author" type="text" placeholder="<%- data.posted_by -%>" value="<%- data.posted_by -%>" required/>
-        <input type="submit" value="Update"/>
+    <form action="./update" method="POST">
+        <div class="group">
+            <label for="dweet">Update Dweet</label>
+            <textarea name="dweet" type="text" placeholder="<%- data.dweet -%>" required><%- data.dweet -%></textarea>
+        </div>
+        <div class="group">
+            <label for="author">Author</label>
+            <input name="author" type="text" placeholder="<%- data.posted_by -%>" value="<%- data.posted_by -%>" required/>
+        </div>
+        <div class="group">
+            <input type="submit" value="Update"/>
+        </div>
     </form>
 <%- include('partials/footer'); -%>
