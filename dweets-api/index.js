@@ -7,7 +7,6 @@ app.set('view engine', 'ejs');
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const port = 3000;
 mongoose.connect("mongodb+srv://admin-parav:Test123@cluster0.dflwu.mongodb.net/dweetsDB", { useNewUrlParser: true, useUnifiedTopology: true });
 
 const dweetSchema = new mongoose.Schema({
@@ -111,4 +110,4 @@ app.route("/dweet/:id/update")
         })
     })
 
-app.listen(port || 3000, () => console.log(`Server started at http://localhost:${port}/`));1
+app.listen(process.env.PORT || 3000);
