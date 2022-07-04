@@ -8,6 +8,7 @@ app.set('view engine', 'ejs');
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
+const port = 3000;
 mongoose.connect("mongodb+srv://admin-parav:Test123@cluster0.dflwu.mongodb.net/dweetsDB", { useNewUrlParser: true, useUnifiedTopology: true });
 
 const dweetSchema = new mongoose.Schema({
@@ -30,3 +31,9 @@ const dweetSchema = new mongoose.Schema({
 });
 
 const Dweet = mongoose.model("Dweet", dweetSchema);
+
+app.get("/", (_req, res) => {
+
+});
+
+app.listen(port || 3000, () => `Server started at http://localhost:${port}/`)
