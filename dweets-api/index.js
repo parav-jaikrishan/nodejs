@@ -31,7 +31,7 @@ const dweetSchema = new mongoose.Schema({
 const Dweet = mongoose.model("Dweet", dweetSchema);
 
 app.get("/", (_req, res) => {
-    res.send("Go to /dweet");
+    res.render("home");
 });
 
 app.get("/dweet", (_req, res) => {
