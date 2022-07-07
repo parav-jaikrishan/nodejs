@@ -6,15 +6,20 @@ import Dweets from './components/Dweets/dweets';
 import CreateButton from './components/CreateButton/createbtn';
 import Create from './components/Create/create';
 import Update from './components/Update/update';
+import Loader from './components/Loader/loader';
 
 export default function App() {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
+  const [loaded, setLoaded] = useState(false);
   const baseLink = "https://dweets-api.herokuapp.com";
 
   fetch(`${baseLink}/dweet`)
     .then(res => res.json())
-    .then(result => setData(result))
+    .then(result => {
+      setData(result);
+      setLoaded(true);
+    })
 
   const deleteFromId = id => {
     const deletedID = { id };
@@ -53,10 +58,11 @@ export default function App() {
       <div className="App">
         <Header/>
         <div className='bottom-section'>
+          {!loaded && <Loader/>}
           <Routes>
-            <Route path="/update/:id" element={<Update dweets={data} handleUpdate={(e, i) => updateFromId(e, i)}/>}/>              
-            <Route path="/create" element={<Create handleCreate={e => createDweet(e)}/>}/>
-            <Route exact path="/" element={<><Dweets dweets={data} handleDelete={i => deleteFromId(i)}/><CreateButton/></>}/>
+            <Route path="/update/:id" element={loaded && <Update dweets={data} handleUpdate={(e, i) => updateFromId(e, i)}/>}/>
+            <Route path="/create" element={loaded && <Create handleCreate={e => createDweet(e)}/>}/>
+            <Route exact path="/" element={loaded && <><Dweets dweets={data} handleDelete={i => deleteFromId(i)}/><CreateButton/></>}/>
           </Routes>
         </div>
       </div>
