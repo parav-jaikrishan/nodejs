@@ -1,0 +1,11 @@
+.App {
+    width: 100vw;
+    height: 100vh;
+}
+.App .bottom-section {
+    height: 60vh;
+    width: 550px;
+    margin: 0 auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+}

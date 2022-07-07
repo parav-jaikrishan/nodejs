@@ -1,0 +1,27 @@
+.dweets-container {
+    width: 100%;
+    font-family: "Inter";
+    color: #14171A;
+}
+.dweets-container div {
+    border-left: 1px solid #AAB8C2;
+    border-right: 1px solid #AAB8C2;
+    border-bottom: 1px solid #AAB8C2;
+    padding: 10px 15px;
+}
+.dweets-container div * {
+    font-size: 20px;
+}
+.dweets-container div h1 {
+    font-weight: 700;
+}
+.dweets-container div h1 span {
+    color: #657786;
+    font-weight: lighter;
+}
+.dweets-container div p {
+    margin-top: 7px;
+}
+.dweets-container div p.post-info {
+    color: #657786; 
+}
