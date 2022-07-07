@@ -11,5 +11,5 @@
     - `/dweet/:id/delete`: Delete a dweet by its id.
 - [Dweets](https://dweets.vercel.app/)
     - This is a react app that calls the Dweets API to display data.
-    - You can view, create, edit and delete dweets.
+    - You can view, create, update and delete dweets.
     - This isn't styled very well but I only made it as an experiment to learn how to send POST and DELETE requests from the `fetch` API.
