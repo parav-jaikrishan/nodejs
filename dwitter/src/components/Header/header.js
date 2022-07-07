@@ -1,4 +1,5 @@
 import "./header.css";
+import { Link } from "react-router-dom";
 
 export default function Header() {
     return (
@@ -7,7 +8,7 @@ export default function Header() {
             <div className="section">
                 <div className="part">
                     <h3>Share your thing,<br/>if it's interesting.</h3>
-                    <button>Dweet now!</button>
+                    <Link to="/create"><button>Dweet now!</button></Link>
                 </div>
                 <img src="assets/splash-img.png" alt="Connected"/>
             </div>
