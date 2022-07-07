@@ -5,7 +5,7 @@ export default function Update(props) {
     const paramId = useParams().id;
     const dweet = props.dweets.find(i => i._id === paramId);
     return (
-        <form onSubmit={(e) => props.handleUpdate(e, paramId)}>        
+        <form onSubmit={e => props.handleUpdate(e, paramId)}>        
             <div className="group">
                 <label htmlFor="author">Author/Editor</label>
                 <input name="author" type="text" placeholder={dweet.posted_by} required/>
