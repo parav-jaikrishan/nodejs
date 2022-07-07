@@ -2,6 +2,7 @@ import './App.css';
 import { useState } from "react";
 import Header from './components/Header/header';
 import Dweets from './components/Dweets/dweets';
+import CreateButton from './components/CreateButton/createbtn';
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Update from './components/Update/update';
 
@@ -42,7 +43,7 @@ export default function App() {
         <div className='bottom-section'>
           <Routes>
             <Route path="/update/:id" element={<Update dweets={data} handleUpdate={(e, i) => updateFromId(e, i)}/>}/>              
-            <Route exact path="/" element={<Dweets dweets={data} handleDelete={i => deleteFromId(i)}/>}/>
+            <Route exact path="/" element={<><Dweets dweets={data} handleDelete={i => deleteFromId(i)}/><CreateButton/></>}/>
           </Routes>
         </div>
       </div>
