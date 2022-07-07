@@ -1,0 +1,47 @@
+form {
+    max-width: 550px;
+    margin: 0 auto;
+    width: 80%;
+}
+.group {
+    margin-top: 30px;
+}
+.group > * {
+    align-items: center;
+    display: block;
+}
+.group label {
+    font-family: "Poppins";
+    color: #657786;
+    letter-spacing: 1px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+.group input,
+.group textarea {
+    font-family: "Poppins";
+    width: 100%;
+    padding: 15px 0 15px 15px;
+    border: 2px solid #eaeaea;
+    border-radius: 5px;
+}
+.group textarea {
+    resize: none;
+    padding: 15px 0 30px 15px;
+}
+.group:last-child {
+  display: flex;
+  justify-content: center;
+}
+.group input[type="submit"] {
+  padding: 15px 20px 15px 20px;
+  background-color:#657786;
+  font-family: "Poppins";
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
