@@ -42,6 +42,7 @@
     color: #AAB8C2;
 }
 .dweets-container div .icons button {
+    cursor: pointer;
     border: none;
     background-color: transparent;
     padding: 5px;
@@ -53,6 +54,5 @@
     margin-right: 100px;
 }
 .dweets-container div .icons button:hover {
-    cursor: pointer;
     background-color: rgba(90, 90, 90, 0.1);
 }
