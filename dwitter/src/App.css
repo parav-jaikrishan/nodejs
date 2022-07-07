@@ -3,6 +3,7 @@
     height: 100vh;
 }
 .App .bottom-section {
+    position: relative;
     height: 60vh;
     width: 750px;
     margin: 0 auto;
