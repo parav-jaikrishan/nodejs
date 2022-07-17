@@ -21,10 +21,11 @@ export default function App() {
       setData(result);
       setLoaded(true);
     })
-  }, []);  
+  }, [loaded]);
 
   const deleteFromId = id => {
     const deletedID = { id };
+    setLoaded(false);
     fetch(`${baseLink}/dweet/${id}`, {
       method: 'DELETE',
       headers: { "Content-Type": "application/json" },
@@ -34,6 +35,7 @@ export default function App() {
 
   const updateFromId = (e, id) => {
     e.preventDefault();
+    setLoaded(false);
     const author = e.target[0].value;
     const dweet = e.target[1].value;
     const reqBody = { author, dweet };
@@ -46,6 +48,7 @@ export default function App() {
 
   const createDweet = e => {
     e.preventDefault();
+    setLoaded(false);
     const username = e.target[0].value;
     const dweet = e.target[1].value;
     const reqBody = { username, dweet };
