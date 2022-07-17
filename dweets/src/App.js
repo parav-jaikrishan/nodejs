@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Header from './components/Header/header';
 import Dweets from './components/Dweets/dweets';
@@ -13,13 +13,15 @@ export default function App() {
   const [data, setData] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const baseLink = "https://dweets-api.herokuapp.com";
-
-  fetch(`${baseLink}/dweet`)
+  
+  useEffect(() => {
+    fetch(`${baseLink}/dweet`)
     .then(res => res.json())
     .then(result => {
       setData(result);
       setLoaded(true);
     })
+  }, []);  
 
   const deleteFromId = id => {
     const deletedID = { id };
